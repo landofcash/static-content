@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Image Gallery</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px;
+    }
+    .image-card {
+      background: white;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 12px;
+    }
+    .image-card img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      margin-bottom: 8px;
+    }
+    .image-url {
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dynamic Image Gallery</h1>
+  <div class="gallery" id="gallery"></div>
+
+  <script>
+    const basePath = "aldemart/c/";
+    const imageList = "amazon.png|android.png|antivirus.png|coupon-offline.png|coupon-online.png|googleplay.png|ios.png|itunes.png|netflix.png|nintendo.png|other.png|playstation.png|spotify.png|steam.png|vpn.png|xbox.png";
+
+    const gallery = document.getElementById('gallery');
+    const images = imageList.split('|');
+
+    images.forEach(file => {
+      const fullUrl = basePath + file;
+
+      const card = document.createElement('div');
+      card.className = 'image-card';
+
+      const img = document.createElement('img');
+      img.src = fullUrl;
+      img.alt = file;
+
+      const urlText = document.createElement('div');
+      urlText.className = 'image-url';
+      urlText.textContent = fullUrl;
+
+      card.appendChild(img);
+      card.appendChild(urlText);
+      gallery.appendChild(card);
+    });
+  </script>
+</body>
+</html>
