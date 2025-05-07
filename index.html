@@ -38,14 +38,15 @@
   <div class="gallery" id="gallery"></div>
 
   <script>
-    const basePath = "aldemart/c/";
+	const domain = "https://c.aldemart.com/"
+    const basePath = "a/c/";
     const imageList = "amazon.png|android.png|antivirus.png|coupon-offline.png|coupon-online.png|googleplay.png|ios.png|itunes.png|netflix.png|nintendo.png|other.png|playstation.png|spotify.png|steam.png|vpn.png|xbox.png";
 
     const gallery = document.getElementById('gallery');
     const images = imageList.split('|');
 
     images.forEach(file => {
-      const fullUrl = basePath + file;
+      const fullUrl = domain+basePath + file;
 
       const card = document.createElement('div');
       card.className = 'image-card';
